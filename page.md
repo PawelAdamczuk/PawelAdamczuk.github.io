@@ -1,1 +1,5 @@
-hello
+---
+layout: splash
+permalink: /
+hidden: true
+---
