@@ -3,4 +3,4 @@ permalink: /music/
 title: "Music I like"
 ---
 
-<iframe src="https://open.spotify.com/embed/album/2WT1pbYjLJciAR26yMebkH" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<iframe src="https://open.spotify.com/embed/playlist/6b7gDxiAIdsFrwuPTckNgB" width="100%" height="500" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
