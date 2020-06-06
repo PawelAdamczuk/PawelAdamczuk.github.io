@@ -22,4 +22,4 @@ A couple of notes:
 - using `zopflipng` gives ~10% storage saving tops, which on this scale is not worth spending several seconds to compress each image
 - `scale=w=min(iw\,800):h=-2` downcales image to 800 width if it's wider and preserves aspect ratio by downscaling height but making it an even number
 
-![Do I?](/assetss/2020-06-06-compressing-images/1.jpg)
+![Do I?](/assets/2020-06-06-compressing-images/1.jpg)

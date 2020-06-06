@@ -6,15 +6,15 @@ Recently I was migrating my posts off a site hosted on Azure. I had barely start
 
 Then I remembered that I had just went through both pages on the site a couple of minutes before. My posts are not long so they were visible in full, complete with the images.
 
-![Nice...](/assetss/2020-06-05-cache-ftw/1.png)
+![Nice...](/assets/2020-06-05-cache-ftw/1.png)
 
 I didn't know Firefox had an interface to browse cache. You can access it by putting `about:cache` in the URL box.
 
-![Nice.](/assetss/2020-06-05-cache-ftw/2.png)
+![Nice.](/assets/2020-06-05-cache-ftw/2.png)
 
 It says "expired", though... will it show me the content?
 
-![Nice!](/assetss/2020-06-05-cache-ftw/3.png)
+![Nice!](/assets/2020-06-05-cache-ftw/3.png)
 
 Bingo!
 
