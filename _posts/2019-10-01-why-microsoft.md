@@ -1,5 +1,5 @@
 ---
-title: 'The AKG 512 MKII'
+title: 'Why, Microsoft?'
 ---
 
 I've been on a vacation. Not anymore. I came to the office, greeted my co-workers, turned on my laptop. There seemed to be an update, but I'm already used to seeing those at random moments. What I'm not used to seeing, however, is software I have never installed popping up in the foreground.
