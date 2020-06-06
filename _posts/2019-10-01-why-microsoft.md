@@ -20,7 +20,7 @@ As I had only 20 minutes to save my work, I cued the restart and went to grab a 
 
 Later during the day, I wanted to check my Skype (the regular one). I was greeted with the usual UAC prompt and clicked "No" without much hesitation. Not today. Let's do it some other time.
 
-![Curiously, you cannot screencap UAC prompts.](/assets/2019-10-01-why-microsoft/5.png)
+![Curiously, you cannot screencap UAC prompts.](/assets/2019-10-01-why-microsoft/6.png)
 
 Only after trying to run Skype three times, I noticed that it would not start the app without the update. What utter nonsense. And this isn't even the version of Skype for Windows 10 that cannot be easily turned off. Don't get me started on that. I sighed and let the updater do its thing just to be able to read my co-workers' messages.
 
