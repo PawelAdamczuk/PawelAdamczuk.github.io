@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "Paweł Adamczuk"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/me.jpg"
   bio              : "Software engineer. Tech enthusiast."
   location         : "Cracow, Poland"
   email            : p.m.adamczuk@gmail.com
