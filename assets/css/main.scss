@@ -8,6 +8,6 @@
 @import "minimal-mistakes"; // main partials
 
 img + em {
-    color: rgba($color: #ff6ee2, $alpha: 1.0);
-    // color: rgba($color: #757575, $alpha: 1.0);
+    opacity: 0.5;
+    display: block;
 }
