@@ -29,18 +29,13 @@ title: "Music I like"
   transition: max-height 0.2s ease-out;
 }
 
-iframe {
+.frame {
     transition: height 0.4s ease;
 }
 </style>
 
-<iframe src="https://open.spotify.com/embed/playlist/6b7gDxiAIdsFrwuPTckNgB" width="100%" height="500" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-
 <div markdown = "0">
     <button class="accordion" data-spotify-id="6b7gDxiAIdsFrwuPTckNgB">6b7gDxiAIdsFrwuPTckNgB</button>
-    <!-- <div class="panel">
-        <iframe src="https://open.spotify.com/embed/playlist/6b7gDxiAIdsFrwuPTckNgB" width="100%" height="500" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    </div> -->
 </div>
 
 
@@ -54,6 +49,7 @@ for (i = 0; i < acc.length; i++) {
 
         if(this.classList.contains("active")) {
             var ifrm = document.createElement("iframe");
+            ifrm.classList.add("frame")
             ifrm.setAttribute("src", `https://open.spotify.com/embed/playlist/${this.attributes["data-spotify-id"].value}`);
             ifrm.style.width = "100%";
             ifrm.style.height = "0px";
