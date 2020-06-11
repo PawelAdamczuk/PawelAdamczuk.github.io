@@ -28,6 +28,10 @@ title: "Music I like"
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
+
+iframe {
+    transition: height 0.4s ease;
+}
 </style>
 
 <iframe src="https://open.spotify.com/embed/playlist/6b7gDxiAIdsFrwuPTckNgB" width="100%" height="500" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -52,8 +56,9 @@ for (i = 0; i < acc.length; i++) {
             var ifrm = document.createElement("iframe");
             ifrm.setAttribute("src", `https://open.spotify.com/embed/playlist/${this.attributes["data-spotify-id"].value}`);
             ifrm.style.width = "100%";
-            ifrm.style.height = "500px";
+            ifrm.style.height = "0px";
             this.parentNode.appendChild(ifrm);
+            ifrm.style.height = "500px";
         } else {
             this.nextElementSibling.remove();
         }
