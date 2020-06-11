@@ -35,7 +35,7 @@ title: "Music I like"
 </style>
 
 <div markdown = "0">
-    <button class="accordion" data-spotify-id="6b7gDxiAIdsFrwuPTckNgB">6b7gDxiAIdsFrwuPTckNgB</button>
+    <button class="accordion" data-spotify-id="6b7gDxiAIdsFrwuPTckNgB">D I S C O V E R</button>
 </div>
 
 
