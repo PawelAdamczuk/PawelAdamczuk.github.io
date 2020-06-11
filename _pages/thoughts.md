@@ -4,6 +4,6 @@ title: "Thoughts"
 ---
 
 {% for thought in site.data.thoughts %}
-{{ thought }}
+- {{ thought }}
 
 {% endfor %}
