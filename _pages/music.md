@@ -34,9 +34,9 @@ title: "Music I like"
 
 <div markdown = "0">
     <button class="accordion" data-spotify-id="6b7gDxiAIdsFrwuPTckNgB">6b7gDxiAIdsFrwuPTckNgB</button>
-    <div class="panel">
+    <!-- <div class="panel">
         <iframe src="https://open.spotify.com/embed/playlist/6b7gDxiAIdsFrwuPTckNgB" width="100%" height="500" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    </div>
+    </div> -->
 </div>
 
 
