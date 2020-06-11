@@ -22,7 +22,7 @@ title: "Music I like"
 }
 
 .panel {
-  padding: 0 18px;
+  padding: 0;
   background-color: white;
   max-height: 0;
   overflow: hidden;
