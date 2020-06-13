@@ -1,5 +1,5 @@
 ---
-permalink: /music/
+permalink: /music-i-like/
 title: "Music I like"
 ---
 

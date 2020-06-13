@@ -1,5 +1,9 @@
 main:
   - title: "Music"
-    url: /music/
+    children:
+        - title: "Music I like"
+          url: /music-i-like/
+        - title: "Music I play"
+          url: /music-i-play/
   - title: "Thoughts"
     url: /thoughts/
