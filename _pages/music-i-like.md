@@ -41,7 +41,9 @@ title: "Music I like"
     <button class="accordion" data-spotify-id="7qLA3m9AkgkVEvTDRDgjcM">D I S C O V E R 2</button>
     <button class="accordion" data-spotify-id="5Y0mxuNoPu2BWa6Pf99H6I">D I S C O V E R 3</button>
     <button class="accordion" data-spotify-id="6b7gDxiAIdsFrwuPTckNgB">D I S C O V E R 4</button>
-    <button class="accordion" data-spotify-id="0aQ9uPzbUFtpGs9Uqp1ONy">Lost & Found</button>
+    <button class="accordion" data-spotify-id="2On2vU910wFGfuq5LtIJVc">Lost & Found 1</button>
+    <button class="accordion" data-spotify-id="54c5g95Ffy5yRwRU7PdoY5">Lost & Found 2</button>
+    <button class="accordion" data-spotify-id="0aQ9uPzbUFtpGs9Uqp1ONy">Lost & Found 3</button>
 </div>
 
 <script>
