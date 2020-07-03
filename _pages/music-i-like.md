@@ -56,7 +56,7 @@ for (i = 0; i < acc.length; i++) {
             ifrm.style.width = "100%";
             ifrm.style.height = "0px";
             this.after(ifrm);
-            ifrm.onload = function() {this.style.height = "500px";}
+            //ifrm.onload = function() {this.style.height = "500px";}
         } else {
             this.nextElementSibling.remove();
         }
