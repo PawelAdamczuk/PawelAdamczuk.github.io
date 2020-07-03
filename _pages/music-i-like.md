@@ -60,7 +60,9 @@ for (i = 0; i < acc.length; i++) {
             this.after(ifrm);
             ifrm.onload = function() {this.style.height = "500px";}
         } else {
-            this.nextElementSibling.remove();
+            var ifrm = this.nextElementSibling;
+            ifrm.style.height = "0px";
+            setTimeout(function() { ifrm.remove(); }, 400);
         }
 
         
