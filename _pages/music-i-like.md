@@ -55,7 +55,7 @@ for (i = 0; i < acc.length; i++) {
             ifrm.setAttribute("src", `https://open.spotify.com/embed/playlist/${this.attributes["data-spotify-id"].value}`);
             ifrm.style.width = "100%";
             ifrm.style.height = "0px";
-            this.parentNode.appendChild(ifrm);
+            this.after(ifrm);
             ifrm.style.height = "500px";
         } else {
             this.nextElementSibling.remove();
