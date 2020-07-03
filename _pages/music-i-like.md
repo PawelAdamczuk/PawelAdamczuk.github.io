@@ -35,9 +35,11 @@ title: "Music I like"
 </style>
 
 <div markdown = "0">
-    <button class="accordion" data-spotify-id="6b7gDxiAIdsFrwuPTckNgB">D I S C O V E R</button>
+    <button class="accordion" data-spotify-id="6WupKwtecAV11l4ZSJCG4t">D I S C O V E R 1</button>
+    <button class="accordion" data-spotify-id="7qLA3m9AkgkVEvTDRDgjcM">D I S C O V E R 2</button>
+    <button class="accordion" data-spotify-id="5Y0mxuNoPu2BWa6Pf99H6I">D I S C O V E R 3</button>
+    <button class="accordion" data-spotify-id="6b7gDxiAIdsFrwuPTckNgB">D I S C O V E R 4</button>
 </div>
-
 
 <script>
 var acc = document.getElementsByClassName("accordion");
