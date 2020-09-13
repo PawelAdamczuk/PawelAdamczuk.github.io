@@ -1,0 +1,100 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Spotify tools</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="container mt-5">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                API credentials settings
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                        data-parent="#accordionExample">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="clientId">Client ID</label>
+                                    <input type="text" v-model="clientId" class="form-control form-control-lg">
+                                    <label for="clientSecret">Client Secret</label>
+                                    <input type="text" v-model="clientSecret" class="form-control form-control-lg">
+                                </div>
+                                <button type="submit" @click.prevent="saveCredentialsToLocalStorage"
+                                    class="btn btn-primary">Save</button>
+                                <button type="submit" @click.prevent="removeCredentialsFromLocalStorage"
+                                    class="btn btn-danger">Clear</button>
+                            </form>
+                            <pre class="mt-5">Client ID: {{clientId}}
+Client Secret: {{clientSecret}}
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <h3>Client ID: {{clientId}}</h3>
+        <h3>Client Secret: {{clientSecret}}</h3>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            clientId: localStorage.getItem('clientId'), //'fbd019d55af84ab5a898bee6e7819c94',
+            clientSecret: localStorage.getItem('clientSecret') //'4784223472f14112ae57c8469102ae9d'
+        },
+        methods: {
+            saveCredentialsToLocalStorage: function () {
+                localStorage.setItem('clientId', this.clientId);
+                localStorage.setItem('clientSecret', this.clientSecret);
+            },
+            removeCredentialsFromLocalStorage: function () {
+                this.clientId = "";
+                this.clientSecret = "";
+                localStorage.clear();
+            }
+        }
+    });
+
+
+
+</script>
+
+</html>
