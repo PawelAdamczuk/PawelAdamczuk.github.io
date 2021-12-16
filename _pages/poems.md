@@ -17,6 +17,7 @@ title: "Poems"
 .poems {
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-left: 10px;
     font-family: "Times New Roman", Times, serif;
 }
 </style>
