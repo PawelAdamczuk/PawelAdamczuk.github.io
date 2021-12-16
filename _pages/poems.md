@@ -24,9 +24,13 @@ title: "Poems"
 ![](/assets/poems.gif)
 
 <div class="poems-1 poems">
-{% include_relative poems/1.md | markdownify %}
+
+{% include_relative poems/1.md %}
+
 </div>
 
 <div class="poems-2 poems">
+
 {% include_relative poems/2.md %}
+
 </div>
