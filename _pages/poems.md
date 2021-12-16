@@ -5,8 +5,8 @@ title: "Poems"
 
 <style>
 .poems-1 {
-    background-color: #00BFB2;
-    color: #1D438A;
+    background-color: #A8D9C6;
+    color: #8C1D06;
 }
 .poems-2 {
     background-color: #7EA1C4;
@@ -32,6 +32,7 @@ title: "Poems"
 
 <div class="poems-2 poems">
 
-{% include_relative poems/2.md %}
+{% capture poem2 %}{% include_relative poems/2.md %}{% endcapture %}
+{{ poem2 | markdownify }}
 
 </div>
