@@ -17,13 +17,14 @@ title: "Poems"
 .poems {
     padding-top: 10px;
     padding-bottom: 10px;
+    font-family: "Times New Roman", Times, serif;
 }
 </style>
 
 ![](/assets/poems.gif)
 
 <div class="poems-1 poems">
-{% include_relative poems/1.md %}
+{% include_relative poems/1.md | markdownify %}
 </div>
 
 <div class="poems-2 poems">
