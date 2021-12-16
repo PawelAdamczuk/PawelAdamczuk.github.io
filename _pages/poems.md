@@ -4,19 +4,6 @@ title: "Poems"
 ---
 
 <style>
-.poems-1 {
-    background-color: #A8D9C6;
-    color: #8C1D06;
-}
-.poems-2 {
-    background-color: #7EA1C4;
-    color: #1B365C;
-}
-.poems-3 {
-    background-color: #CED9A7;
-    color: #5D008C;
-}
-
 
 .poems {
     padding-top: 20px;
@@ -24,6 +11,17 @@ title: "Poems"
     padding-left: 10px;
     font-family: "Times New Roman", Times, serif;
 }
+
+.poems:nth-child(odd) {
+    background-color: #BAB4FA;
+    color: #0A0078;
+}
+
+.poems:nth-child(even) {
+    background-color: #0A0078;
+    color: #BAB4FA;
+}
+
 </style>
 
 ![](/assets/poems.gif)
