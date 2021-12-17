@@ -27,9 +27,22 @@ title: "Poems"
     color: rgb(228, 229, 235);
 }
 
+@media only screen and (max-width: 600px) {
+    .poems {
+        padding: 0.5em 1.2em;
+    }
+}
+
 </style>
 
 ![](/assets/poems.gif)
+
+<div class="poems">
+
+{% capture poem20 %}{% include_relative poems/20.md %}{% endcapture %}
+{{ poem20 | markdownify }}
+
+</div>
 
 <div class="poems">
 
