@@ -29,7 +29,8 @@ title: "Poems"
 
 @media only screen and (max-width: 600px) {
     .poems {
-        padding: 0.5em 1.2em;
+        padding-top: 0.001em;
+        padding-bottom: 0.001em;
     }
 }
 
