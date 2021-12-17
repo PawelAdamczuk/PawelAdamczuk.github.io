@@ -4,22 +4,27 @@ title: "Poems"
 ---
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
 .poems {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 10px;
-    font-family: "Times New Roman", Times, serif;
+    padding: 0.7em 1.7em;
+    margin: 1.2em auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
 }
 
+.poems p {
+    margin: 1em;
+    text-align: center;
+}
 .poems:nth-child(odd) {
-    background-color: #e2e0ff;
-    color: #0A0078;
+    background-color: rgb(228, 229, 235);
+    color: rgb(28, 29, 35);
 }
 
 .poems:nth-child(even) {
-    background-color: #0A0078;
-    color: #e2e0ff;
+    background-color: rgb(28, 29, 35);
+    color: rgb(228, 229, 235);
 }
 
 </style>
