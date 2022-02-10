@@ -13,36 +13,5 @@ After installing SumatraPDF, this issue occurs:
 
 This is because of these shell extensions:
 
-<div markdown = "0">
-<h3>Shell Extensions List</h3>
-<br><h4>Created by using <a href="http://www.nirsoft.net/" target="newwin">ShellExView</a></h4><p><table border="1" cellpadding="5"><tr bgcolor="E0E0E0">
-<th>Extension Name
-<th>Disabled
-<th>Type
-<th>Description
-<th>Version
-<th>Product Name
-<th>Company
-<th>My Computer
-<th>Desktop
-<th>Control Panel
-<th>My Network Places
-<th>Entire Network
-<th>Remote Computer
-<th>Filename
-<th>CLSID
-<th>File Created Time
-<th>CLSID Modified Time
-<th>Microsoft
-<th>File Extensions
-<th>File Attributes
-<th>File Size
-<th>.NET Extension
-<th>Digital Signature
-<th>Missing File
-<tr><td bgcolor=#FFFFF0 nowrap>SumatraPDF Preview (*.pdf)<td bgcolor=#FFFDF0 nowrap>Yes<td bgcolor=#FFFCF0 nowrap>Preview Handler<td bgcolor=#FFFBF0 nowrap>SumatraPDF Preview Shell Extension<td bgcolor=#FFF9F0 nowrap>3.3.3<td bgcolor=#FFF8F0 nowrap>SumatraPDF<td bgcolor=#FFF7F0 nowrap>&nbsp;<td bgcolor=#FFF5F0 nowrap>No<td bgcolor=#FFF4F0 nowrap>No<td bgcolor=#FFF3F0 nowrap>No<td bgcolor=#FFF1F0 nowrap>No<td bgcolor=#FFF0F0 nowrap>No<td bgcolor=#FEF0F0 nowrap>No<td bgcolor=#FDF0F1 nowrap>C:\Users\pawel.adamczuk\AppData\Local\SumatraPDF\PdfPreview.dll<td bgcolor=#FBF0F3 nowrap>{3D3B1846-CC43-42AE-BFF9-D914083C2BA3}<td bgcolor=#FAF0F4 nowrap>9/8/2021 8:32:47 AM<td bgcolor=#F9F0F5 nowrap>9/8/2021 8:33:03 AM<td bgcolor=#F7F0F7 nowrap>No<td bgcolor=#F6F0F8 nowrap>.pdf<td bgcolor=#F5F0F9 nowrap>A<td bgcolor=#F3F0FB nowrap>749,568<td bgcolor=#F2F0FC nowrap>No<td bgcolor=#F1F0FD nowrap>&nbsp;<td bgcolor=#F0F0FF nowrap>No
-<tr><td bgcolor=#FFFFF0 nowrap>SumatraPDF Preview (*.pdf)<td bgcolor=#FFFDF0 nowrap>Yes<td bgcolor=#FFFCF0 nowrap>Thumbnail Handler<td bgcolor=#FFFBF0 nowrap>SumatraPDF Preview Shell Extension<td bgcolor=#FFF9F0 nowrap>3.3.3<td bgcolor=#FFF8F0 nowrap>SumatraPDF<td bgcolor=#FFF7F0 nowrap>&nbsp;<td bgcolor=#FFF5F0 nowrap>No<td bgcolor=#FFF4F0 nowrap>No<td bgcolor=#FFF3F0 nowrap>No<td bgcolor=#FFF1F0 nowrap>No<td bgcolor=#FFF0F0 nowrap>No<td bgcolor=#FEF0F0 nowrap>No<td bgcolor=#FDF0F1 nowrap>C:\Users\pawel.adamczuk\AppData\Local\SumatraPDF\PdfPreview.dll<td bgcolor=#FBF0F3 nowrap>{3D3B1846-CC43-42AE-BFF9-D914083C2BA3}<td bgcolor=#FAF0F4 nowrap>9/8/2021 8:32:47 AM<td bgcolor=#F9F0F5 nowrap>9/8/2021 8:33:03 AM<td bgcolor=#F7F0F7 nowrap>No<td bgcolor=#F6F0F8 nowrap>.pdf<td bgcolor=#F5F0F9 nowrap>A<td bgcolor=#F3F0FB nowrap>749,568<td bgcolor=#F2F0FC nowrap>No<td bgcolor=#F1F0FD nowrap>&nbsp;<td bgcolor=#F0F0FF nowrap>No
-</table>
-</div>
 
 Disabling them using [ShellExView](https://www.nirsoft.net/utils/shexview.html) fixes the issue.
