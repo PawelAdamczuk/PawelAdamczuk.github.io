@@ -48,6 +48,12 @@ WARA OD MOJEGO KODU PASZTECIARZE
     body {
       font-family: "Josefin Slab";
       color: #0b354d;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    body::-webkit-scrollbar {
+      display: none;
     }
 
     nav {
@@ -289,7 +295,7 @@ WARA OD MOJEGO KODU PASZTECIARZE
           </div>
         </div>
         <div class="col-sm-8">
-          
+
           <div class="row border bg-light shadow-sm p-3">
             <h1 class="text-center">Odliczanie</h1>
             <h3 class="text-center">Do ślubu pozostało jedynie:</h3>
@@ -331,7 +337,7 @@ WARA OD MOJEGO KODU PASZTECIARZE
           </div>
           <div class="row border bg-light shadow-sm p-3 mt-3">
             <h1 class="text-center">Sugestie dla gości</h1>
-            <ul class="list-group" style="font-size: larger;">
+            <ul class="list-group" style="font-size: larger; padding-right: 0px;">
               <li class="list-group-item">W kościele, w którym odbędzie się ceremonia zaślubin, prosimy nie rozrzucać
                 konfetti, ryżu ani bilonu.</li>
               <li class="list-group-item">Prosimy nie przynosić kwiatów - goście zaoszczędzą czas i pieniądze, my nie
@@ -359,24 +365,24 @@ WARA OD MOJEGO KODU PASZTECIARZE
 
     var now = new Date().getTime();
 
-      // Find the distance between now and the count down date
-      var distance = countDownDate - now;
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
 
-      // Time calculations for days, hours, minutes and seconds
-      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      // Display the result in the element with id="demo"
-      document.getElementById("countdown").innerHTML = days + " dni, " + hours + " godzin, "
-        + minutes + " minut i " + seconds + " sekund";
+    // Display the result in the element with id="demo"
+    document.getElementById("countdown").innerHTML = days + " dni, " + hours + " godzin, "
+      + minutes + " minut i " + seconds + " sekund";
 
-      // If the count down is finished, write some text
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("countdown").innerHTML = "impreza woo \\o/";
-      }
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("countdown").innerHTML = "impreza woo \\o/";
+    }
 
     // Update the count down every 1 second
     var x = setInterval(function () {
