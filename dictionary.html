@@ -102,6 +102,16 @@
 
 <body>
     <div class="container mt-5">
+        <div id="configError" class="row justify-content-center hidden">
+            <div class="col-12">
+                <div class="alert alert-warning text-center" role="alert">
+                    <h4 class="alert-heading mb-3">Configuration Required</h4>
+                    <p>The dictionary needs to be configured before it can be used.</p>
+                    <hr>
+                    <a href="settings.html" class="btn btn-warning">Go to Settings</a>
+                </div>
+            </div>
+        </div>
         <div id="searchContainer" class="row justify-content-center">
             <div class="col-12">
                 <input type="text" id="searchInput" class="form-control form-control-lg"
@@ -123,6 +133,30 @@
     </div>
 
     <script>
+        // Check URL parameters and save to localStorage if present
+        function saveConfigFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const key = urlParams.get('key');
+            const endpoint = urlParams.get('endpoint');
+
+            if (key && endpoint) {
+                const hostname = 'paweladamczuk.com';
+                const groupId = 'OpenAiEndpoint';
+                localStorage.setItem(`${hostname}.${groupId}.apiKey`, key);
+                localStorage.setItem(`${hostname}.${groupId}.endpoint`, endpoint);
+
+                // Remove parameters from URL without reloading
+                window.history.replaceState({}, document.title, window.location.pathname);
+                return true;
+            }
+            return false;
+        }
+
+        // Try to save config from URL and reload if successful
+        if (saveConfigFromUrl()) {
+            location.reload();
+        }
+
         // Load system prompt
         let systemPrompt;
         fetch('assets/dictionary-prompt.txt')
@@ -132,28 +166,45 @@
             })
             .catch(error => console.error('Error loading system prompt:', error));
 
+        // Get DOM elements first
+        const configError = document.getElementById('configError');
+        const searchContainer = document.getElementById('searchContainer');
+        const responseContainer = document.getElementById('responseContainer');
+        const searchInput = document.getElementById('searchInput');
+        const responseBox = document.getElementById('responseBox');
+        const spinner = document.getElementById('spinner');
+        const responseText = document.getElementById('responseText');
+
         // Get API configuration from LocalStorage
         const hostname = 'paweladamczuk.com';
         const groupId = 'OpenAiEndpoint';
         const apiKey = localStorage.getItem(`${hostname}.${groupId}.apiKey`);
         const apiEndpoint = localStorage.getItem(`${hostname}.${groupId}.endpoint`);
 
-        if (!apiKey || !apiEndpoint) {
-            console.error('API configuration not found in LocalStorage');
+        function checkConfiguration() {
+            if (!apiKey || !apiEndpoint) {
+                searchContainer.classList.add('hidden');
+                responseContainer.classList.add('hidden');
+                configError.classList.remove('hidden');
+                return false;
+            }
+            configError.classList.add('hidden');
+            searchContainer.classList.remove('hidden');
+            return true;
         }
 
-        const searchInput = document.getElementById('searchInput');
-        const searchContainer = document.getElementById('searchContainer');
-        const responseContainer = document.getElementById('responseContainer');
-        const responseBox = document.getElementById('responseBox');
-        const spinner = document.getElementById('spinner');
-        const responseText = document.getElementById('responseText');
+        // Initial configuration check
+        checkConfiguration();
 
         // Handle enter key press
         searchInput.addEventListener('keypress', async function (e) {
             if (e.key === 'Enter') {
                 e.preventDefault();
                 const query = searchInput.value.trim();
+
+                if (!checkConfiguration()) {
+                    return;
+                }
 
                 if (query) {
                     // Hide search, show response with spinner
