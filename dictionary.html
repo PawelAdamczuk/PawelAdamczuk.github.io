@@ -153,22 +153,48 @@
         // Function to focus input and open keyboard
         function focusAndOpenKeyboard() {
             const searchInput = document.getElementById('searchInput');
-            searchInput.focus();
 
-            // This trick helps open the keyboard on mobile devices
-            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                searchInput.blur();
+            // Special handling for iOS Safari
+            if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+                // Create a temporary button and click it to enable user interaction
+                const tempButton = document.createElement('button');
+                tempButton.style.position = 'fixed';
+                tempButton.style.top = '0';
+                tempButton.style.left = '0';
+                tempButton.style.opacity = '0';
+                document.body.appendChild(tempButton);
+
+                tempButton.addEventListener('click', function () {
+                    searchInput.focus();
+                    // Add a slight delay for iOS
+                    setTimeout(() => {
+                        searchInput.click();
+                        // Remove the temporary button
+                        document.body.removeChild(tempButton);
+                    }, 100);
+                });
+
+                tempButton.click();
+            } else {
                 searchInput.focus();
+                // For Android
+                if (/Android/.test(navigator.userAgent)) {
+                    searchInput.blur();
+                    searchInput.focus();
+                }
             }
         }
 
-        // Focus input when page loads
-        document.addEventListener('DOMContentLoaded', focusAndOpenKeyboard);
+        // Focus input when page loads and after a small delay
+        document.addEventListener('DOMContentLoaded', () => {
+            // Small delay to ensure DOM is fully ready
+            setTimeout(focusAndOpenKeyboard, 300);
+        });
 
         // Also focus when visibility changes (e.g., when user switches back to the tab)
         document.addEventListener('visibilitychange', function () {
             if (!document.hidden) {
-                focusAndOpenKeyboard();
+                setTimeout(focusAndOpenKeyboard, 300);
             }
         });
 
