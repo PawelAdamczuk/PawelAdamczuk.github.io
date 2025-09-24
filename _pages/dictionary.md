@@ -20,6 +20,11 @@ permalink: /dictionary/
     </div>
     <div id="searchContainer" class="row justify-content-center">
         <div class="col-12">
+            <p>This is an opinionated, LLM-powered dictionary. Type in a word and press enter. Double click the description to restore the input textbox. It's BYOU - bring your own key. Set the key and endpoint in <a href="/settings">settings</a>. If you came here with a link I sent you that contained the key, you can just use my key, it's already configured. This tool is supposed to be used with Openrouter.</p>
+        </div>
+    </div>
+    <div id="searchContainer" class="row justify-content-center">
+        <div class="col-12">
             <input type="text" id="searchInput" class="form-control form-control-lg"
                 placeholder="Type a word and press Enter..." autocomplete="off" autofocus>
         </div>
