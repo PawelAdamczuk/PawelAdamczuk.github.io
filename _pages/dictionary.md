@@ -5,6 +5,8 @@ author_profile: true
 permalink: /dictionary/
 ---
 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 <div class="container mt-5">
     <div id="configError" class="row justify-content-center hidden">
         <div class="col-12">
