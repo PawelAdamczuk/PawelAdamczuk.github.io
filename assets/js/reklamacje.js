@@ -91,7 +91,7 @@ document.getElementById('typst').addEventListener('load', function () {
             DATA: document.getElementById('data').value
         };
 
-        fetch('assets/reklamacje.typ')
+        fetch('/assets/reklamacje.typ')
             .then(response => response.text())
             .then(templateContent => {
                 console.log('TEMPLATE CONTENT BEFORE REPLACEMENT:', templateContent);
