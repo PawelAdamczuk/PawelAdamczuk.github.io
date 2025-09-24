@@ -269,8 +269,6 @@ defaults:
       related:
         true
         # _pages
-      sidebar:
-        nav: "docs"
   - scope:
       path: ""
       type: pages
@@ -278,3 +276,8 @@ defaults:
       layout: single
       classes: wide
       author_profile: true
+  - scope:
+      path: ""
+    values:
+      sidebar:
+        nav: "main"
