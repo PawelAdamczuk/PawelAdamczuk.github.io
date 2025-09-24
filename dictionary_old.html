@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dictionary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .response-box {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: clamp(15px, 3vw, 20px);
+            margin-top: clamp(15px, 3vw, 20px);
+            font-size: clamp(1em, 2.5vw, 1.1em);
+            line-height: 1.6;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+
+        /* Markdown styling */
+        .response-box h1 {
+            font-size: 1.8em;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+        }
+
+        .response-box h2 {
+            font-size: 1.5em;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+        }
+
+        .response-box h3 {
+            font-size: 1.3em;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+        }
+
+        .response-box p {
+            margin-bottom: 1em;
+        }
+
+        .response-box ul,
+        .response-box ol {
+            margin-bottom: 1em;
+            padding-left: 2em;
+        }
+
+        .response-box code {
+            background-color: #eee;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .response-box pre {
+            background-color: #eee;
+            padding: clamp(0.5em, 2vw, 1em);
+            border-radius: 5px;
+            overflow-x: auto;
+            max-width: 100%;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .response-box blockquote {
+            border-left: 4px solid #ccc;
+            margin: 1em 0;
+            padding-left: 1em;
+            color: #666;
+        }
+
+        #searchInput {
+            font-size: clamp(1.2em, 4vw, 1.5em);
+            padding: clamp(10px, 2vw, 15px);
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .spinner {
+            width: 3rem;
+            height: 3rem;
+            margin: 2rem auto;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fade-in 0.3s ease-in;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+
+    </script>
+</body>
+
+</html>

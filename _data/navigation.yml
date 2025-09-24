@@ -1,7 +1,16 @@
 main:
-  - title: "Music I like"
-    url: /music-i-like/
-  - title: "Music I play"
-    url: /music-i-play/
-  - title: "Thoughts"
-    url: /thoughts/
+  - title: "Tools"
+    children:
+      - title: "Generator wniosku reklamacji [Polish]"
+        url: /reklamacje/
+      - title: "Dictionary"
+        url: /dictionary/
+
+  - title: "Slightly personal"
+    children:        
+      - title: "Music I like"
+        url: /music-i-like/
+      - title: "Music I play"
+        url: /music-i-play/
+      - title: "Thoughts"
+        url: /thoughts/
