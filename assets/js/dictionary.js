@@ -72,7 +72,7 @@ if (saveConfigFromUrl()) {
 
 // Load system prompt
 let systemPrompt;
-fetch('assets/dictionary-prompt.txt')
+fetch('/assets/dictionary-prompt.txt')
     .then(response => response.text())
     .then(text => {
         systemPrompt = text;
