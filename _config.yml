@@ -280,4 +280,4 @@ defaults:
       path: ""
     values:
       sidebar:
-        nav: "main"
+        nav: "sidebar-nav"
