@@ -17,7 +17,7 @@ permalink: /reklamacje/
     id="typst"></script>
 
 <div class="container mt-5">
-    <h1>Reklamacja PDF Generator</h1>
+    <h1>Generator wniosku reklamacji</h1>
     <form id="reklamacjaForm" class="mb-3">
         <h5>Dane konsumenta</h5>
         <div class="row g-3">
