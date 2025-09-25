@@ -1,4 +1,7 @@
+console.log('DEBUG: markdown-pdf.js script loaded');
+
 document.addEventListener('DOMContentLoaded', function () {
+    console.log('DEBUG: DOMContentLoaded fired');
     const generateBtn = document.getElementById('generatePdf');
     const showPreviewBtn = document.getElementById('showPreview');
     const leftMarkdown = document.getElementById('leftMarkdown');
@@ -23,11 +26,23 @@ document.addEventListener('DOMContentLoaded', function () {
         rightPreview: !!rightPreview
     });
 
+    // Check if marked is available
+    console.log('DEBUG: marked library available:', typeof marked !== 'undefined');
+
     // Configure marked options
-    marked.setOptions({
-        breaks: true,
-        gfm: true
-    });
+    if (typeof marked !== 'undefined') {
+        try {
+            marked.setOptions({
+                breaks: true,
+                gfm: true
+            });
+            console.log('DEBUG: marked options set successfully');
+        } catch (error) {
+            console.error('DEBUG: Error setting marked options:', error);
+        }
+    } else {
+        console.error('DEBUG: marked library not available');
+    }
 
     // Function to find optimal font size for content to fit
     function findOptimalFontSize(container, content, maxFontSize = 16, minFontSize = 8) {
@@ -162,17 +177,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Show preview button handler
-    showPreviewBtn.addEventListener('click', function () {
-        console.log('DEBUG: Show preview button clicked');
+    if (showPreviewBtn) {
+        showPreviewBtn.addEventListener('click', function () {
+            console.log('DEBUG: Show preview button clicked');
 
-        const leftMd = leftMarkdown.value.trim();
-        const rightMd = rightMarkdown.value.trim();
+            // Basic test first
+            alert('Preview button clicked!');
 
-        renderMarkdownContent(leftMd, rightMd, leftPreview, rightPreview);
-        visiblePreview.style.display = 'block';
+            const leftMd = leftMarkdown.value.trim();
+            const rightMd = rightMarkdown.value.trim();
 
-        console.log('DEBUG: Preview should now be visible');
-    });
+            console.log('DEBUG: Retrieved values:', { leftMd, rightMd });
+
+            renderMarkdownContent(leftMd, rightMd, leftPreview, rightPreview);
+            visiblePreview.style.display = 'block';
+
+            console.log('DEBUG: Preview should now be visible');
+        });
+    } else {
+        console.error('DEBUG: Show preview button not found!');
+    }
 
     generateBtn.addEventListener('click', async function () {
         try {
