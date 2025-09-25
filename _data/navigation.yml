@@ -5,6 +5,8 @@ sidebar-nav:
         url: /reklamacje/
       - title: "Dictionary"
         url: /dictionary/
+      - title: "Markdown to PDF"
+        url: /markdown-pdf/
 
   - title: "Slightly personal"
     children:        
