@@ -70,9 +70,25 @@ This content will appear on the **right side** of the PDF.
 
     <div class="row mb-4">
         <div class="col-12 text-center">
+            <button type="button" class="btn btn-secondary me-3" id="showPreview">
+                Show Preview
+            </button>
             <button type="button" class="btn btn-primary btn-lg" id="generatePdf">
                 Generate PDF
             </button>
+        </div>
+    </div>
+
+    <!-- Visible preview container -->
+    <div id="visiblePreview" class="row mb-4" style="display: none;">
+        <div class="col-12">
+            <h3>Preview</h3>
+            <div class="border p-3" style="background-color: white; min-height: 400px;">
+                <div style="display: flex; gap: 20px; height: 100%;">
+                    <div id="leftPreview" style="flex: 1; border-right: 1px solid #ddd; padding-right: 10px;"></div>
+                    <div id="rightPreview" style="flex: 1; padding-left: 10px;"></div>
+                </div>
+            </div>
         </div>
     </div>
 
