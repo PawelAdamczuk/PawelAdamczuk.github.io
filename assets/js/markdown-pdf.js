@@ -181,8 +181,6 @@ document.addEventListener('DOMContentLoaded', function () {
         showPreviewBtn.addEventListener('click', function () {
             console.log('DEBUG: Show preview button clicked');
 
-            // Basic test first
-            alert('Preview button clicked!');
 
             const leftMd = leftMarkdown.value.trim();
             const rightMd = rightMarkdown.value.trim();
@@ -301,6 +299,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const tempImg = canvas.toDataURL('image/png');
             console.log('DEBUG: Canvas data URL length:', tempImg.length);
             console.log('DEBUG: Canvas data URL preview:', tempImg.substring(0, 100));
+
+            // Show the captured canvas as an image for debugging
+            const debugImg = document.createElement('img');
+            debugImg.src = tempImg;
+            debugImg.style.maxWidth = '500px';
+            debugImg.style.border = '2px solid red';
+            debugImg.style.display = 'block';
+            debugImg.style.margin = '20px auto';
+            document.body.appendChild(debugImg);
+            console.log('DEBUG: Canvas image added to page for inspection');
 
             // Create PDF in landscape orientation
             const { jsPDF } = window.jspdf;
