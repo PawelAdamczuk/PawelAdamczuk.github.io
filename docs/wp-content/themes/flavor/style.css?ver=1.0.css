@@ -1,0 +1,223 @@
+/*
+Theme Name: Flavor
+Theme URI: https://paweladamczuk.com
+Author: Paweł Adamczuk
+Description: Minimal blog theme matching the paweladamczuk.com design.
+Version: 1.0
+License: GNU General Public License v2 or later
+Text Domain: flavor
+*/
+
+/* --- Theme variables --- */
+[data-theme="dark"] {
+    --bg: #0d1b2a;
+    --text: #b0bec5;
+    --accent: #4a9eff;
+    --border: #1b2d44;
+    --text-muted: #607080;
+    --code-bg: rgba(74, 158, 255, 0.08);
+}
+
+[data-theme="light"] {
+    --bg: #f0f2f5;
+    --text: #1a2332;
+    --accent: #1d5bbf;
+    --border: #d0d7de;
+    --text-muted: #6b7685;
+    --code-bg: rgba(29, 91, 191, 0.07);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Murecho', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.content-width {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+h1, h2, h3 { font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; }
+
+/* Header */
+header {
+    padding: 4rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.site-title { font-size: 1.6rem; margin-bottom: 0.2rem; }
+.site-title a { color: inherit; text-decoration: none; }
+
+.site-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+nav.site-nav { display: flex; gap: 1.5rem; margin-top: 1.5rem; font-size: 0.9rem; }
+nav.site-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+nav.site-nav a:hover { color: var(--accent); }
+
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: color 0.2s, border-color 0.2s;
+    margin-top: 0.2rem;
+}
+
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Posts */
+main { padding-top: 2rem; }
+
+article { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+article:last-of-type { border-bottom: none; }
+
+.post-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.post-title { font-size: 1.4rem; margin-bottom: 0.6rem; line-height: 1.35; }
+.post-title a { color: var(--text); text-decoration: none; }
+.post-title a:hover { color: var(--accent); }
+
+.post-content p { margin-bottom: 0.8rem; }
+.post-content p:last-child { margin-bottom: 0; }
+
+/* Links */
+a {
+    color: var(--accent);
+    text-decoration-color: transparent;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color 0.2s;
+}
+a:hover { text-decoration-color: var(--accent); }
+
+.read-more,
+a.more-link { font-size: 0.9rem; display: inline-block; margin-top: 0.5rem; }
+
+/* Inline styles */
+em { font-style: italic; }
+strong, b { font-weight: 600; }
+
+code {
+    background-color: var(--code-bg);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+pre {
+    background-color: var(--code-bg);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 0.85em;
+    line-height: 1.5;
+    margin: 1.5rem 0;
+}
+
+pre code { background: none; padding: 0; border-radius: 0; }
+
+blockquote {
+    border-left: 2px solid var(--accent);
+    padding-left: 1.2rem;
+    margin: 1.5rem 0;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Images */
+img { max-width: 100%; height: auto; border-radius: 4px; margin: 1rem 0; }
+
+/* Lists */
+ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+li { margin-bottom: 0.3rem; }
+
+/* Separator */
+.separator {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem 0;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+}
+
+/* About */
+.about { padding: 2rem 0 0; }
+.about h2 {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+.about p { line-height: 1.8; }
+
+/* Page-specific */
+.back-link {
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+.back-link:hover { color: var(--accent); }
+.post-full { padding: 3rem 0; }
+.post-title-full { font-size: 1.8rem; margin-bottom: 1.5rem; line-height: 1.35; }
+
+/* Footer */
+footer {
+    padding: 3rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+footer a { color: var(--text-muted); }
+footer a:hover { color: var(--accent); }
+.footer-links { margin-top: 0.5rem; }
+
+/* Responsive */
+@media (max-width: 600px) {
+    body { font-size: 16px; }
+    header { padding: 2.5rem 0 1.5rem; }
+    .site-title { font-size: 1.3rem; }
+    article { padding: 1.5rem 0; }
+}
+
+/* WordPress overrides */
+.wp-block-image img { margin: 1rem 0; }
+.aligncenter { display: block; margin: 0 auto; }
+.alignleft { float: left; margin-right: 1.5rem; }
+.alignright { float: right; margin-left: 1.5rem; }
+.wp-caption { max-width: 100%; }
+.wp-caption-text { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem; }

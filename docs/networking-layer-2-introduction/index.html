@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-US" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Networking layer 2 on Cisco devices &#8211; Paweł Adamczuk</title>
+<meta name='robots' content='max-image-preview:large' />
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='flavor-fonts-css' href='https://fonts.googleapis.com/css2?family=Murecho:wght@400;600;700&#038;display=swap' type='text/css' media='all' />
+<link rel='stylesheet' id='flavor-style-css' href='../wp-content/themes/flavor/style.css%3Fver=1.0.css' type='text/css' media='all' />
+<link rel="canonical" href="index.html" />
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+</head>
+<body>
+  <header>
+    <div class="content-width">
+      <div class="header-inner">
+        <div>
+          <h1 class="site-title"><a href="../index.html">Paweł Adamczuk</a></h1>
+          <p class="site-subtitle">writing about code &amp; design</p>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode" aria-label="Toggle theme">☽</button>
+      </div>
+      <nav class="site-nav">
+        <a href="../index.html">Blog</a>
+        <a href="mailto:p.m.adamczuk@gmail.com">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="content-width">
+  <article class="post-full">
+    <a class="back-link" href="../index.html">← Back</a>
+    <span class="post-date">02 August 2016</span>
+          <h1 class="post-title-full">Networking layer 2 on Cisco devices</h1>
+        <div class="post-content"><p>In this article I focus on the first layer of the TCP/IP network model, specifically the Ethernet standard. I will build a small simulated network and explore the frame flow through networking and end devices along with the protocols making the communication in the Network Access Layer possible. You can read a quick summary of the TCP/IP network model <a href="http://www.omnisecu.com/tcpip/tcpip-model.php">here</a> and get an overview of the more extensive OSI model <a href="http://docwiki.cisco.com/wiki/Internetworking_Basics#Figure:_The_OSI_Reference_Model_Contains_Seven_Independent_Layers">here</a>. The software you can use to recreate the examples presented here by yourself is Cisco Packet Tracer. It is available for free for the <a href="https://www.netacad.com">Cisco Networking Academy</a> members (the registration is a free process as well).</p>
+<p><span id="more-50"></span></p>
+<h2>The MAC address</h2>
+<p>The MAC address, or the physical address, is the lowest unit of addressing that will concern us. A physical address is a unique identifier of a network interface, stored in read-only memory (hence sometimes called burn-in address). Each network interface, such as the NIC card of your laptop or your desktop computer, or a port in a switch, has a single MAC address assigned. Many devices will allow you to change this address to any desired value, however, it is not advised to do so. The physical address of a device is in principle unique, and MAC address conflicts are some of the hardest networking problems to troubleshoot.</p>
+<p>The MAC address consists of six bytes &#8211; the first three form an Organizationally Unique Identifier and therefore can be used to identify the vendor of a network device. The rest of the address is left to the decision of the equipment manufacturer. The notation of the MAC addresses varies. You might see pairs of hexadecimal digits separated by colons or hyphens, with capital or small letters. Some devices (e.g. Cisco switches) use three groups of digits separated by dots. A thing to remember when recognising MAC addresses is that most notations consist only of hexadecimal digits, i.e. digits from 0 to 10 and letters a-f.</p>
+<p>The same MAC address formatted in three different ways:</p>
+<pre><code>01:23:45:67:89:ab
+01-23-45-67-89-AB
+0123.4567.89ab
+</code></pre>
+<p><img decoding="async" alt="The network diagram" src="../wp-content/uploads/2026/04/1-2.jpg" /></p>
+<p>Some protocols utilise the possibility of sending Ethernet frames to all the devices within a broadcast domain (basically a network segment with a single router as a border gateway device). Such frames have the destination address ffff.ffff.ffff, or &#8220;all ones&#8221; when converted to binary format.</p>
+<h2>Switches &gt; Hubs</h2>
+<p>A hub is just a bunch of wires connected together. It has no internal memory (unlike a switch). It retransmits every frame (a name for the data-link layer data unit) on all the interfaces (except the given frame&#8217;s ingress one) simultaneously. Hubs only support half-duplex Ethernet mode. This means that the communication is one-way only &#8211; when one device transmits, no other device in the <a href="https://en.wikipedia.org/wiki/Collision_domain">collision domain</a> can transmit at the same time. In our example, a single collision domain will contain the two end devices connected to the hub, the hub itself and one port of a switch. The collision avoidance and recovery is managed by the CSMA/CD process. You can read more about it <a href="http://docwiki.cisco.com/wiki/Introduction_to_LAN_Protocols#LAN_Media-Access_Methods">here</a>. Usually, you won&#8217;t have to be concerned with half-duplex communication and collision domains. Most of modern networks work in full-duplex mode and consist of switches &#8211; no hubs involved. It is still proper to know the concept, as it helps understand frame flow in larger networks.</p>
+<p>Hubs are &#8220;dumb&#8221; devices, while switches are more &#8220;smart&#8221;. Switches contain memory that is used to buffer and queue incoming frames, so that full-duplex communication with multiple network devices is possible and the frames are directed to the exact location of their destination addresses, as opposed to the hubs, limiting the devices with half-duplex communication, enclosing them within a single collision domain and finally transmitting all the packets on multiple links simultaneously. Not only is it a security risk (the frames directed to one device can be sniffed by all other devices in the same collision domain, i.e. connected to the same hub), but also produces loads of unnecessary traffic, sent out from the hub only to be discarded by all the NICs except the one to which the packet was sent.</p>
+<p>Switches achieve smaller loads on the links by sending out received frames on a single link (unless they are broadcast/multicast frames). A switch is able to identify and store the information about MAC addresses of the devices connected to its interfaces in a table called simply MAC-address-table (sometimes called CAM table). When a switch receives a frame whose destination address is not present in its MAC-address-table, it performs &#8220;flooding&#8221; &#8211; it sends out the frame on all its interfaces, hoping that the destination device will return some traffic so that the switch can learn to which of its interfaces the new device is connected. An entry in the MAC address table is deleted after its aging timer (renewed by picking up Ethernet frames on the entry&#8217;s port, from the corresponding MAC address) expires. The timer is set by default to 5 minutes on Cisco switches.</p>
+<h2>Say hello to my little CLI</h2>
+<p>To be able to efficiently manage configurations of Cisco devices and troubleshoot networks, you have to be able to get around the command line interface of the IOS software. We will be using many commands in the practical examples, but first remember a few things useful when dealing with the interface:</p>
+<h3>The &#8216;?&#8217; key</h3>
+<p>The single most useful tool. At any point in time, type the question mark to see the elements of the menu you&#8217;re in, or the possible phrases and values completing the command you&#8217;re typing in.</p>
+<h3>The &#8216;tab&#8217; key</h3>
+<p>It autocompletes the command you&#8217;re typing. If the command is ambiguous (eg. you input &#8216;te&#8217; and there are &#8216;telnet&#8217; and &#8216;terminals&#8217; elements in the menu) it will print nothing. However, it will do the same if the command you typed in is invalid. To find out which one&#8217;s the case, hit the friendly &#8216;?&#8217; button mid-command!</p>
+<h3>Implicit autocompletion</h3>
+<p>If you input only parts of the command, but all of the parts are unambiguous, you can hit enter and the command will work just as if you entered its full version. For example, the command:</p>
+<p><code>&gt;sh in F 0/1</code></p>
+<p>wil give the same result as its full version:</p>
+<p><code>&gt;show interfaces FastEthernet 0/1</code></p>
+<p>However, if you type in:</p>
+<p><code>&gt;sh i F 0/1</code></p>
+<p>the terminal will print:</p>
+<p><code>% Ambiguous command: "show i Fast 0/1"</code></p>
+<p>because there is also an &#8220;ip&#8221; element in the main menu.</p>
+<h3>The CTRL-SHIFT-6 combination</h3>
+<p>The intuitive CTRL-C and CTRL-Z keystrokes work in some cases, exiting the sub-menus, but to stop procedures like ping or hostname resolution (the system tries to resolve any command you spell wrong as a hostname… and it takes some time) you need to know this handy combination.</p>
+<h3>The output modifiers</h3>
+<p>The output modifiers work like piping commands in *NIX. There&#8217;s no &#8216;grep&#8217;, but there is &#8216;include&#8217;. You can get more info on the output modifiers using the friendly &#8216;?&#8217; button.</p>
+<h2>Building the network</h2>
+<p>A functional network might consist of just two hosts (end devices) connected with a crossover Ethernet cable. Where&#8217;s the fun in that, though?</p>
+<p>The simple example network we will build will consist of four end devices, a hub (a concentrator) and a switch. Hubs are hardly in use any more, but they help to understand further concepts of switching in LAN networks.</p>
+<p>You can download the <a href="https://paweladamczuk.com/networking-layer-2-introduction/main.pkt">Packet Tracer project</a> or you can recreate it from scratch. I recommend the latter &#8211; it will give you some practice with the Cisco CLI and the Packet Tracer itself.</p>
+<h2>The network diagram</h2>
+<p><img decoding="async" alt="The network diagram" src="../wp-content/uploads/2026/04/1-2.jpg" /></p>
+<p>You will notice there are two kinds of Ethernet cables used. The ones between the end devices and the hub and the switch are straight-through Ethernet cables. The connection between the hub and the switch is a crossover cable. This distinction is not so relevant any more in modern context. Most devices have capability to detect the kind of cable and adjust accordingly. Still, it&#8217;s a thing to keep in mind when troubleshooting connections between some older devices. For a brief explanation, head <a href="http://www.home-network-help.com/straight.html">here</a>.</p>
+<p>Once you add the devices and their connections in the Packet Tracer (make sure to use the same ports as the ones listed in the diagram), you have to do some basic configuration. We are not concerned with the network layer logical addresses at the moment, but we have to configure them to be able to generate traffic in Packet Tracer and trace those packets. Configure the IP addresses as shown below.</p>
+<h2>The hosts&#8217; IP configuration</h2>
+<p><img decoding="async" alt="The hosts' IP configuration" src="../wp-content/uploads/2026/04/2-2.png" /></p>
+<p>The switch requires some configuration as well. There are a couple of protocols turned on by default, namely STP, CDP and DTP. We don&#8217;t need any of those right now. STP stands for spanning tree protocol, implemented to avoid loops in switched networks and multiple VLAN environments. Our network is so small that we can plainly see there are no loops whatsoever. CDP is Cisco Discovery Protocol useful in central network device management scenarios. DTP is Dynamic Trunking Protocol. We will be only using the access mode on the switchports &#8211; no need for DTP as well. To turn all of these off (on the interfaces we will be using), enter the switch&#8217;s cli and use the following commands:</p>
+<pre><code>&gt;enable
+&gt;configure terminal
+&gt;interface FastEthernet 0/1
+&gt;switchport mode access
+&gt;exit
+&gt;interface FastEthernet 0/2
+&gt;switchport mode access
+&gt;exit
+&gt;interface FastEthernet 0/3
+&gt;switchport mode access
+&gt;exit
+&gt;no cdp run
+&gt;exit
+&gt;copy running-config startup-config
+</code></pre>
+<p>Packet Tracer lets you export and import the device&#8217;s configuration to and from your hard drive. You can download the switch configuration file <a href="https://paweladamczuk.com/networking-layer-2-introduction/mSwitch0_startup-config.txt">here</a>. Keep in mind that any changes you make in the configuration menu are being saved in the running configuration only. They will be lost when you reboot the device, unless you save the running configuration as startup configuration using the last one of the commands listed above.</p>
+<h2>Get started</h2>
+<p>As we simulate some traffic in our network, we will be able to observe changes in the MAC address table of our switch and see the frame flow on the diagram. First of all, power cycle the devices. Wait for the switch to finish booting, fast forward the time a minute or two to eliminate the initial chatter and enter the simulation mode. The time is stopped, and you can advance it to see the events in the network. Enter the switch&#8217;s CLI and type in:</p>
+<pre><code>&gt;en
+&gt;clear mac-address-table
+</code></pre>
+<p>to clear the table from any entries created during the PCs&#8217; startup. Next, type:</p>
+<pre><code>&gt;show mac-address-table
+</code></pre>
+<p>to see the table. It should be empty.</p>
+<p><img decoding="async" alt="The switch's MAC address table is empty" src="../wp-content/uploads/2026/04/3.jpg" /></p>
+<p>The table will remain empty until the switch receives traffic. Go ahead and forward time a few times. If you followed the configuration instructions, no packet should appear. Remember that this is a mere simulation &#8211; in reality, there are multiple protocols and services running on every host that generate all kinds of network traffic.</p>
+<p>To generate traffic, we will use the ping command. Ping is a tool sending echo ICMP requests to a remote host. It is a protocol of a higher layer than the data-link layer, but, following the rules of the layer model, it is ultimately encapsulated in Ethernet frames. To ping PC2 from PC1, click on PC1, then switch to the &#8220;Desktop&#8221; tab and enter command prompt. First, clear the ARP protocol cache by using the <code>arp -d</code> command. The ARP protocol will be explained in the next article. For now, it will help demonstrate how broadcast Ethernet frames propagate all over the broadcast domain. Type in <code>ping 192.168.1.2</code> and click enter. You will immediately see three or two frames appear in the networking stack of PC1. One of them is the ICMP echo request. It will probably get dropped, since no ARP entries corresponding to its destination IP are present. The other frame(s) is an ARP frame. All you need to know about this frame for now is that its destination MAC address is <code>ffff.ffff.ffff</code>. You can verify that by clicking the frame. You can now click &#8220;Capture/Forward&#8221; to see what happens with the frames. You can see that the PC1 keeps broadcasting ARP requests. It will receive an answer shortly and the ping command will recommence. Meanwhile, the broadcast frames are getting retransmitted by the hub and the switch alike &#8211; they have the broadcast destination MAC address, so even the switch is obligated to forward it to every device to which it is connected. As the ARP requests from PC1 and the response from PC2 reach the switch, entries in the MAC address table will be created. You can view the table again. There should be two entries in the table, both of them assigned to the same Ethernet port &#8211; FastEthernet 0/1. These are the entries for PC1 and PC2. From the switch&#8217;s perspective, they are both connected to the same physical link.</p>
+<p><img decoding="async" alt="There are new entries in the table" src="../wp-content/uploads/2026/04/4.jpg" /></p>
+<p>There are no entries for PC3 and PC4. No traffic originating from those hosts reached the switch, as the machines were not supposed to answer the ARP request &#8211; and they didn&#8217;t.</p>
+<p>Forward the time until you see another ICMP frame appear.</p>
+<p><img decoding="async" alt="The ICMP frame" src="../wp-content/uploads/2026/04/5.png" /></p>
+<p>Now you can follow the packet as it is sent and retransmitted by the hub. The hub transmits the frame on all its links, even to the switch. The switch drops the frame, as to forward it, it would have to send it back on the exact same link &#8211; both MAC addresses are assigned to the same interface in the MAC address table. That would make no sense.</p>
+<h2>Collisions</h2>
+<p>We are now ready to simulate a collision of frames in the hub&#8217;s collision domain. The ARP tables of PC1 and PC2 already have the needed entries, so this time, no preliminary ARP chatter will be needed. Forward the simulation so that the previous ping&#8217;s frames reach their destination and the command on PC1 ceases the transmitting. Now that the simulation is paused, enter the PC1&#8217;s terminal and ping PC2&#8217;s IP address. Without forwarding the simulation, open PC2&#8217;s terminal and ping PC1&#8217;s address. You should see two ICMP frames appear in the network stacks of the two end devices. Forward the time once. As the frames reach the hub, little flame marks will appear next to them. It is Packet Tracer indicating that a collision has occured. The frames get retransmitted, but all devices in the collision domain are able to detect the problem and they end up dropping the frames regardless of its destination. The frames are dropped by the PC2&#8217;s NIC as well &#8211; instead of being passed to higher layers in the networking stack and eventually to the ICMP echo service.</p>
+<p><img decoding="async" alt="A collision has occured" src="../wp-content/uploads/2026/04/6.png" /></p>
+<p>From this point on, the simulation scenarios might differ slightly. A random-time back-off mechanism of the NIC&#8217;s will get triggered. This means that the devices will wait a random period of time before trying to retransmit the frame, in order to avoid the next collision and eventual jamming of the link. The Packet Tracer simulation shows the process in a simplified way &#8211; in reality, when a collision occurs, the NIC&#8217;s will try to retransmit the frame a fixed number of times before dropping it. In the simulation, the ICMP packets are dropped right after the first collision is detected. The transmission of next ICMP frames occurs due to the ping tools still working on the end devices. The random time back-off mechanism is implemented in the data-link layer, even though it might seem like a ping tool&#8217;s feature when you analyse the simulated frame flow. Keep forwarding the time of the simulation. You will likely see many more collisions occur before the ping tools finish sending requests and display the response information. You will see the percentage packet loss statistic in the end devices&#8217; terminals.</p>
+<p><img decoding="async" alt="Poor ping results" src="../wp-content/uploads/2026/04/7.png" /></p>
+<h2>Multiple-collision-domains networks</h2>
+<p>Have a look at the network diagram, specifically the segment with the switch and two end devices connected to it. Can you see how many collision domains there are in this segment? Even though collisions will not occur on a full-duplex link, we still call individual full-duplex connections between devices &#8220;collision domains&#8221;. Therefore, there are two collision domains in this segment of our network. You can make sure the communication is full-duplex by using the &#8216;show interfaces&#8217; command.</p>
+<p><img decoding="async" alt="Both ports are working in full-duplex mode" src="../wp-content/uploads/2026/04/8.png" /></p>
+<p>It is also an opportunity to further explore the MAC address table of the switch. Depending on how much simulation time you skipped, there might still be PC1 and PC2 entries in the table. Remember the aging timer is set to 300s by default &#8211; the entries might be already gone. Kepp track of the table as we perform the next steps of the simulation.</p>
+<p>Full-duplex communication in a switched network should mean that no collisions will occur if we try sending two crossing ping requests between PC3 and PC4 at the same time. Let&#8217;s make sure that&#8217;s the case. Repeat the procedure from the previous point, this time sending the pings between PC3 and PC4. Forward the time and see the ARP request and ICMP frames traveling. You should see the entries for the MAC addresses of PC3 and PC4 appear in the swith&#8217;s table as the first ping packets reach it. This time, however, the new MAC addresses will have different ports assigned. The flooding will not occur, as the first ARP frames were broadcast frames anyway, and the switch could create the MAC address entries basing on those. After forwarding time until the ping requests finish, you will see much better results than on the hub network segment.</p>
+<p><img decoding="async" alt="Better ping results on the switched network segment" src="../wp-content/uploads/2026/04/9.png" /></p>
+<p>Keep in mind that were the two connections (PC3 &lt;-&gt; switch, PC4 &lt;-&gt; switch) in half-duplex mode, there would still exist two separate collision domains, but this time collisions may really occur. Still, they could only happen within a single collision domain, being one Ethernet cable in our case &#8211; because a switch divides a network into collision domains in this way. You can test that by switching both end devices&#8217; Ethernet controllers to half-duplex mode and re-running the ping simulation.</p>
+<h2>Recap</h2>
+<p>The most important concepts covered above:</p>
+<ul>
+<li>network layer models</li>
+<li>ehternet frames</li>
+<li>Packet Tracer simulation basics</li>
+<li>basic commands in the Cisco IOS CLI</li>
+<li>Ethernet frame flow in a concentrated and a switched network</li>
+<li>difference between switches and hubs</li>
+<li>collision domains and broadcast domains</li>
+<li>frame collisions and its impact on networking performance</li>
+<li>editing and saving configuration of a Cisco switch</li>
+</ul>
+<p><em>I am not a networking expert &#8211; if you notice any errors in the article, please send me an e-mail.</em></p>
+</div>
+  </article>
+</main>
+
+  <footer>
+    <div class="content-width">
+      <p>&copy; 2026 Paweł Adamczuk</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      var theme = saved || preferred;
+      document.documentElement.setAttribute('data-theme', theme);
+      updateIcon(theme);
+    })();
+
+    function toggleTheme() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateIcon(next);
+    }
+
+    function updateIcon(theme) {
+      var btn = document.querySelector('.theme-toggle');
+      if (btn) btn.textContent = theme === 'dark' ? '☽' : '☀';
+    }
+  </script>
+
+  <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/flavor/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+</body>
+</html>
