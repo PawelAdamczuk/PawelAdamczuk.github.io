@@ -175,6 +175,8 @@ li { margin-bottom: 0.3rem; }
     letter-spacing: 0.3em;
 }
 
+/* WordPress block separator — match the homepage article dividers */
+
 /* About */
 .about { padding: 2rem 0 0; }
 .about h2 {
