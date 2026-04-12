@@ -63,8 +63,8 @@ nav.site-nav a { color: var(--text-muted); text-decoration: none; transition: co
 nav.site-nav a:hover { color: var(--accent); }
 
 /* --- Post list (homepage) --- */
-.post-entry { padding: 2rem 0; border-bottom: 1px solid var(--border); }
-.post-entry:last-child { border-bottom: none; }
+.wp-block-post-template > li { padding-top: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+.wp-block-post-template > li:last-child { border-bottom: none; }
 
 .post-entry .wp-block-post-date {
     font-size: 0.8rem;
@@ -196,5 +196,5 @@ li { margin-bottom: 0.3rem; }
     body { font-size: 16px; }
     .site-header { padding-top: 2.5rem; padding-bottom: 1.5rem; }
     .wp-block-site-title { font-size: 1.3rem; }
-    .post-entry { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+    .wp-block-post-template > li { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 }
