@@ -34,7 +34,7 @@ Requires PHP: 8.0
 }
 
 /* --- Base reset --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; box-sizing: border-box; }
 
 body {
     background-color: var(--bg);
@@ -44,7 +44,8 @@ body {
 
 /* --- Header --- */
 .site-header {
-    padding: 4rem 0 2rem;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
     border-bottom: 1px solid var(--border);
 }
 
@@ -168,7 +169,8 @@ li { margin-bottom: 0.3rem; }
 
 /* --- Footer --- */
 .site-footer {
-    padding: 3rem 0;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     margin-top: 2rem;
     border-top: 1px solid var(--border);
     color: var(--text-muted);
@@ -192,7 +194,7 @@ li { margin-bottom: 0.3rem; }
 /* --- Responsive --- */
 @media (max-width: 600px) {
     body { font-size: 16px; }
-    .site-header { padding: 2.5rem 0 1.5rem; }
+    .site-header { padding-top: 2.5rem; padding-bottom: 1.5rem; }
     .wp-block-site-title { font-size: 1.3rem; }
-    .post-entry { padding: 1.5rem 0; }
+    .post-entry { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 }
