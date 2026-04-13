@@ -159,6 +159,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     function close(){overlay.style.display="none";document.body.style.overflow="";}
     overlay.addEventListener("click",close);
     document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
+    if(window.matchMedia("(hover: none)").matches) return;
     document.querySelectorAll(".wp-block-post-content img, .entry-content img").forEach(function(el){
       el.style.cursor="zoom-in";
       el.addEventListener("click",function(e){
@@ -168,6 +169,29 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         document.body.style.overflow="hidden";
       });
     });
+    /* Mobile lightbox with icon trigger (disabled for now):
+    var isTouch=window.matchMedia("(hover: none)").matches;
+    document.querySelectorAll(".wp-block-post-content img, .entry-content img").forEach(function(el){
+      function open(){
+        img.src=el.currentSrc||el.src;
+        overlay.style.display="flex";
+        document.body.style.overflow="hidden";
+      }
+      if(isTouch){
+        var fig=el.closest("figure")||el.parentNode;
+        fig.style.position="relative";
+        var btn=document.createElement("button");
+        btn.className="lightbox-trigger";
+        btn.setAttribute("aria-label","Expand image");
+        btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+        fig.appendChild(btn);
+        btn.addEventListener("click",function(e){e.stopPropagation();open();});
+      }else{
+        el.style.cursor="zoom-in";
+        el.addEventListener("click",function(e){e.preventDefault();open();});
+      }
+    });
+    */
   });
 })();
 </script>
