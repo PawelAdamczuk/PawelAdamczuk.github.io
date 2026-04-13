@@ -10,7 +10,7 @@
   var p=window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";
   var t=s||p;
   document.documentElement.setAttribute("data-theme",t);
-  function u(th){var b=document.querySelector(".theme-toggle");if(b)b.textContent=th==="dark"?"☀":"☽";}
+  function u(th){var b=document.querySelector(".theme-toggle");if(b)b.textContent=th==="dark"?"\u2600\uFE0E":"\u263D";}
   document.addEventListener("DOMContentLoaded",function(){u(t);});
   window.toggleTheme=function(){
     var c=document.documentElement.getAttribute("data-theme");
@@ -143,6 +143,32 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/flavor/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script>
+(function(){
+  document.addEventListener("DOMContentLoaded",function(){
+    var overlay=document.createElement("div");
+    overlay.id="img-lightbox";
+    overlay.style.cssText="display:none;position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.9);cursor:zoom-out;justify-content:center;align-items:center";
+    var img=document.createElement("img");
+    img.style.cssText="max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px";
+    overlay.appendChild(img);
+    document.body.appendChild(overlay);
+    function close(){overlay.style.display="none";document.body.style.overflow="";}
+    overlay.addEventListener("click",close);
+    document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
+    document.querySelectorAll(".wp-block-post-content img, .entry-content img").forEach(function(el){
+      el.style.cursor="zoom-in";
+      el.addEventListener("click",function(e){
+        e.preventDefault();
+        var full=el.getAttribute("data-full-url")||el.src.replace(/-\d+x\d+\./,".");
+        img.src=full;
+        overlay.style.display="flex";
+        document.body.style.overflow="hidden";
+      });
+    });
+  });
+})();
 </script>
 <script id="wp-block-template-skip-link-js-after">
 	( function() {
