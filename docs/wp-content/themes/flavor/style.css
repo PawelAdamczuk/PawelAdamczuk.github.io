@@ -69,7 +69,7 @@ body {
     font-weight: 400;
 }
 
-nav.site-nav { display: flex; gap: 1.5rem; margin-top: 1.5rem; font-size: 0.9rem; }
+nav.site-nav { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; font-size: 0.9rem; }
 nav.site-nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
 nav.site-nav a:hover { color: var(--accent); }
 
@@ -79,9 +79,11 @@ nav.site-nav a:hover { color: var(--accent); }
     color: var(--text-muted);
     cursor: pointer;
     font-size: 1rem;
-    padding: 0.25rem 0.5rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 4px;
     line-height: 1;
+    margin-left: auto;
     transition: color 0.2s, border-color 0.2s;
 }
 .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
@@ -167,7 +169,7 @@ li { margin-bottom: 0.3rem; }
     margin-bottom: 1rem;
     font-weight: 600;
 }
-.about-section p { line-height: 1.8; }
+.about-section p { line-height: 1.7; }
 
 /* --- Single post --- */
 .back-link {
