@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Szablon drukowalnego dokumentu HTML</title>
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #ececec;
+      color: #111;
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12pt;
+      line-height: 1.45;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .document {
+      padding: 10mm 0;
+    }
+
+    .page-stack {
+      display: block;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 0 auto 8mm;
+      padding: 18mm;
+      background: #fff;
+      box-shadow: 0 4mm 14mm rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .page:last-child {
+      margin-bottom: 0;
+    }
+
+    .page-body {
+      flex: 1;
+      min-height: 0;
+    }
+
+    .page-footer {
+      margin-top: 8mm;
+      padding-top: 4mm;
+      border-top: 1px solid #999;
+      text-align: right;
+      font-size: 10.5pt;
+      color: #444;
+    }
+
+    .page-source {
+      position: absolute;
+      left: -99999px;
+      top: 0;
+      width: 174mm;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .header-top {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16mm;
+      align-items: start;
+    }
+
+    .sender {
+      max-width: 85mm;
+    }
+
+    .place-date {
+      text-align: right;
+      justify-self: end;
+    }
+
+    .recipient {
+      width: 78mm;
+      margin-top: 16mm;
+      margin-left: auto;
+    }
+
+    .recipient-line {
+      margin: 0;
+    }
+
+    .subject {
+      margin: 16mm 0 10mm;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    p {
+      margin: 0 0 4.5mm;
+      text-align: justify;
+      orphans: 3;
+      widows: 3;
+    }
+
+    .salutation {
+      text-align: left;
+    }
+
+    .signature-block {
+      margin-top: 12mm;
+    }
+
+    .signature {
+      margin-top: 10mm;
+    }
+
+    .annex-title {
+      margin: 0 0 6mm;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      table-layout: fixed;
+    }
+
+    thead {
+      display: table-header-group;
+    }
+
+    tfoot {
+      display: table-footer-group;
+    }
+
+    th,
+    td {
+      padding: 2.2mm 3mm;
+      vertical-align: top;
+      text-align: left;
+      border-right: 1px solid #222;
+      border-bottom: 1px solid #222;
+      background: #fff;
+    }
+
+    th:first-child,
+    td:first-child {
+      border-left: 1px solid #222;
+    }
+
+    thead tr:first-child > *,
+    tbody:first-child tr:first-child > * {
+      border-top: 1px solid #222;
+    }
+
+    thead + tbody tr:first-child > * {
+      border-top: 0;
+    }
+
+    tr,
+    th,
+    td {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .note {
+      margin-top: 4mm;
+      font-size: 10.5pt;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .document {
+        padding: 0;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+        break-after: page;
+        page-break-after: always;
+      }
+
+      .page:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="document">
+    <div class="page-stack" id="pageStack"></div>
+
+    <div class="page-source" id="pageSource" aria-hidden="true">
+      <header>
+        <div class="header-top">
+          <div class="sender"><strong>Jan Kowalski</strong><br>ul. Klonowa 7/3<br>00-123 Przykładowice</div>
+          <div class="place-date">Przykładowice, 1 kwietnia 2026</div>
+        </div>
+
+        <div class="recipient">
+          <div class="recipient-line"><strong>Dom Kultury "Pod Żarówką"</strong></div>
+          <div class="recipient-line"><strong>Dział wydarzeń lokalnych</strong></div>
+          <div class="recipient-line">ul. Wspólna 12</div>
+          <div class="recipient-line">00-124 Przykładowice</div>
+        </div>
+      </header>
+
+      <div class="subject">Wniosek o udostępnienie sali na sąsiedzki turniej planszówek</div>
+
+      <p class="salutation">Szanowni Państwo,</p>
+
+      <p>piszę z uprzejmą prośbą o udostępnienie sali wielofunkcyjnej w Domu Kultury "Pod Żarówką" na potrzeby sąsiedzkiego turnieju planszówek pod roboczym tytułem "Pionek, herbata i chwała".</p>
+
+      <p>Wydarzenie miałoby charakter niekomercyjny i lokalny. W planie są spokojne rozgrywki, drobny poczęstunek oraz integracja mieszkańców, bez przemówień dłuższych niż instrukcja do Carcassonne i bez napięcia większego niż przy liczeniu punktów za największego farmera.</p>
+
+      <p>Szacuję udział około 20 osób. Potrzebne byłyby cztery stoły, kilkanaście krzeseł oraz możliwość wejścia do sali około 30 minut wcześniej, aby spokojnie rozłożyć plansze, uporządkować pionki i upewnić się, że żadna kość nie rozpocznie samodzielnej emigracji pod kaloryfer.</p>
+
+      <p>W załączeniu przekazuję przykładowy harmonogram wydarzenia. Jeżeli wskazany termin byłby niedostępny, będę wdzięczny za propozycję najbliższej możliwej daty albo sali o podobnym potencjale strategicznym.</p>
+
+      <p>Będę wdzięczny za informację zwrotną w dogodnej dla Państwa formie. Zależy mi przede wszystkim na tym, aby wydarzenie odbyło się spokojnie, punktualnie i bez konieczności rozgrywania finału na parapecie.</p>
+
+      <p>Z góry dziękuję za życzliwe rozpatrzenie prośby. Jeśli wszystko się uda, obiecuję, że zwycięzca turnieju otrzyma dyplom, a nie insygnia władzy nad osiedlem.</p>
+
+      <div class="signature-block">
+        <p>Z poważaniem,</p>
+        <div class="signature"><strong>Jan Kowalski</strong></div>
+      </div>
+
+      <section class="paged-table-block">
+        <div class="annex-title">Załącznik nr 1 - Przykładowy harmonogram wydarzenia</div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Godzina / przedział</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>05.05.2026</td><td>16:30-17:00</td></tr>
+            <tr><td>05.05.2026</td><td>17:00-17:30</td></tr>
+            <tr><td>05.05.2026</td><td>17:30-18:00</td></tr>
+            <tr><td>05.05.2026</td><td>18:00-18:30</td></tr>
+            <tr><td>05.05.2026</td><td>18:30-19:00</td></tr>
+            <tr><td>07.05.2026</td><td>16:30-17:00</td></tr>
+            <tr><td>07.05.2026</td><td>17:00-17:30</td></tr>
+            <tr><td>07.05.2026</td><td>17:30-18:00</td></tr>
+            <tr><td>07.05.2026</td><td>18:00-18:30</td></tr>
+            <tr><td>07.05.2026</td><td>18:30-19:00</td></tr>
+            <tr><td>12.05.2026</td><td>16:30-17:00</td></tr>
+            <tr><td>12.05.2026</td><td>17:00-17:30</td></tr>
+            <tr><td>12.05.2026</td><td>17:30-18:00</td></tr>
+            <tr><td>12.05.2026</td><td>18:00-18:30</td></tr>
+            <tr><td>12.05.2026</td><td>18:30-19:00</td></tr>
+            <tr><td>14.05.2026</td><td>16:30-17:00</td></tr>
+            <tr><td>14.05.2026</td><td>17:00-17:30</td></tr>
+            <tr><td>14.05.2026</td><td>17:30-18:00</td></tr>
+            <tr><td>14.05.2026</td><td>18:00-18:30</td></tr>
+            <tr><td>14.05.2026</td><td>18:30-19:00</td></tr>
+            <tr><td>19.05.2026</td><td>16:30-17:00</td></tr>
+            <tr><td>19.05.2026</td><td>17:00-17:30</td></tr>
+            <tr><td>19.05.2026</td><td>17:30-18:00</td></tr>
+            <tr><td>19.05.2026</td><td>18:00-18:30</td></tr>
+            <tr><td>19.05.2026</td><td>18:30-19:00</td></tr>
+            <tr><td>21.05.2026</td><td>16:30-17:00</td></tr>
+            <tr><td>21.05.2026</td><td>17:00-17:30</td></tr>
+            <tr><td>21.05.2026</td><td>17:30-18:00</td></tr>
+            <tr><td>21.05.2026</td><td>18:00-18:30</td></tr>
+            <tr><td>21.05.2026</td><td>18:30-19:00</td></tr>
+            <tr><td>26.05.2026</td><td>16:30-17:00</td></tr>
+            <tr><td>26.05.2026</td><td>17:00-17:30</td></tr>
+            <tr><td>26.05.2026</td><td>17:30-18:00</td></tr>
+            <tr><td>26.05.2026</td><td>18:00-18:30</td></tr>
+            <tr><td>26.05.2026</td><td>18:30-19:00</td></tr>
+            <tr><td>28.05.2026</td><td>16:30-17:00</td></tr>
+            <tr><td>28.05.2026</td><td>17:00-17:30</td></tr>
+            <tr><td>28.05.2026</td><td>17:30-18:00</td></tr>
+            <tr><td>28.05.2026</td><td>18:00-18:30</td></tr>
+            <tr><td>28.05.2026</td><td>18:30-19:00</td></tr>
+          </tbody>
+        </table>
+
+        <div class="note">Harmonogram ma charakter demonstracyjny i służy wyłącznie pokazaniu układu dokumentu, paginacji oraz zachowania tabel przy wydruku z przeglądarki.</div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const pageStack = document.getElementById("pageStack");
+      const pageSource = document.getElementById("pageSource");
+
+      function createPage() {
+        const page = document.createElement("section");
+        page.className = "page";
+
+        const body = document.createElement("div");
+        body.className = "page-body";
+
+        const footer = document.createElement("div");
+        footer.className = "page-footer";
+
+        page.append(body, footer);
+        pageStack.append(page);
+
+        return { page, body, footer };
+      }
+
+      function isOverflowing(element) {
+        return element.scrollHeight > element.clientHeight + 1;
+      }
+
+      function appendBlock(node, currentPage) {
+        const clone = node.cloneNode(true);
+        currentPage.body.appendChild(clone);
+
+        if (isOverflowing(currentPage.body) && currentPage.body.childElementCount > 1) {
+          currentPage.body.removeChild(clone);
+          currentPage = createPage();
+          currentPage.body.appendChild(clone);
+        }
+
+        return currentPage;
+      }
+
+      function cloneTableShell(table) {
+        const tableClone = table.cloneNode(false);
+
+        if (table.tHead) {
+          tableClone.appendChild(table.tHead.cloneNode(true));
+        }
+
+        tableClone.appendChild(document.createElement("tbody"));
+        return tableClone;
+      }
+
+      function buildFirstTableFragment(table) {
+        const fragmentTable = cloneTableShell(table);
+        const firstRow = table.tBodies[0] && table.tBodies[0].rows[0];
+
+        if (firstRow) {
+          fragmentTable.tBodies[0].appendChild(firstRow.cloneNode(true));
+        }
+
+        return fragmentTable;
+      }
+
+      function ensureSpaceForIntro(currentPage, introNodes, table) {
+        if (!currentPage.body.childElementCount) {
+          return currentPage;
+        }
+
+        const probe = document.createElement("div");
+        probe.style.visibility = "hidden";
+        probe.style.pointerEvents = "none";
+
+        introNodes.forEach((node) => {
+          probe.appendChild(node.cloneNode(true));
+        });
+
+        if (table) {
+          probe.appendChild(buildFirstTableFragment(table));
+        }
+
+        currentPage.body.appendChild(probe);
+        const fits = !isOverflowing(currentPage.body);
+        currentPage.body.removeChild(probe);
+
+        return fits ? currentPage : createPage();
+      }
+
+      function appendPaginatedTable(table, currentPage) {
+        const rows = Array.from((table.tBodies[0] && table.tBodies[0].rows) || []);
+        let rowIndex = 0;
+
+        while (rowIndex < rows.length) {
+          const tableClone = cloneTableShell(table);
+          const tbody = tableClone.tBodies[0];
+          currentPage.body.appendChild(tableClone);
+
+          let rowsOnThisPage = 0;
+
+          while (rowIndex < rows.length) {
+            const rowClone = rows[rowIndex].cloneNode(true);
+            tbody.appendChild(rowClone);
+
+            if (isOverflowing(currentPage.body)) {
+              tbody.removeChild(rowClone);
+              break;
+            }
+
+            rowIndex += 1;
+            rowsOnThisPage += 1;
+          }
+
+          if (!rowsOnThisPage) {
+            currentPage.body.removeChild(tableClone);
+            currentPage = createPage();
+            continue;
+          }
+
+          if (rowIndex < rows.length) {
+            currentPage = createPage();
+          }
+        }
+
+        return currentPage;
+      }
+
+      function appendPaginatedTableBlock(block, currentPage) {
+        const table = block.querySelector("table");
+
+        if (!table) {
+          return appendBlock(block, currentPage);
+        }
+
+        const children = Array.from(block.children);
+        const tableIndex = children.indexOf(table);
+        const introNodes = children.slice(0, tableIndex);
+        const outroNodes = children.slice(tableIndex + 1);
+
+        currentPage = ensureSpaceForIntro(currentPage, introNodes, table);
+
+        introNodes.forEach((node) => {
+          currentPage = appendBlock(node, currentPage);
+        });
+
+        currentPage = appendPaginatedTable(table, currentPage);
+
+        outroNodes.forEach((node) => {
+          currentPage = appendBlock(node, currentPage);
+        });
+
+        return currentPage;
+      }
+
+      function paginate() {
+        pageStack.innerHTML = "";
+
+        let currentPage = createPage();
+        const flowNodes = Array.from(pageSource.children);
+
+        flowNodes.forEach((node) => {
+          if (node.classList.contains("force-new-page")) {
+            currentPage = createPage();
+            return;
+          }
+
+          if (node.classList.contains("paged-table-block")) {
+            currentPage = appendPaginatedTableBlock(node, currentPage);
+            return;
+          }
+
+          if (node.tagName === "TABLE") {
+            currentPage = appendPaginatedTable(node, currentPage);
+            return;
+          }
+
+          currentPage = appendBlock(node, currentPage);
+        });
+
+        const footers = Array.from(pageStack.querySelectorAll(".page-footer"));
+        const totalPages = footers.length;
+
+        footers.forEach((footer, index) => {
+          footer.textContent = "Strona " + (index + 1) + " / " + totalPages;
+        });
+      }
+
+      let scheduled = false;
+
+      function schedulePaginate() {
+        if (scheduled) {
+          return;
+        }
+
+        scheduled = true;
+        requestAnimationFrame(() => {
+          scheduled = false;
+          paginate();
+        });
+      }
+
+      window.addEventListener("DOMContentLoaded", schedulePaginate);
+      window.addEventListener("load", schedulePaginate);
+      window.addEventListener("resize", schedulePaginate);
+      window.addEventListener("beforeprint", paginate);
+    })();
+  </script>
+</body>
+</html>

@@ -4,6 +4,23 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name='robots' content='max-image-preview:large' />
+<script>
+(function(){
+  var s=localStorage.getItem("theme");
+  var p=window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";
+  var t=s||p;
+  document.documentElement.setAttribute("data-theme",t);
+  function u(th){var b=document.querySelector(".theme-toggle");if(b)b.textContent=th==="dark"?"☀":"☽";}
+  document.addEventListener("DOMContentLoaded",function(){u(t);});
+  window.toggleTheme=function(){
+    var c=document.documentElement.getAttribute("data-theme");
+    var n=c==="dark"?"light":"dark";
+    document.documentElement.setAttribute("data-theme",n);
+    localStorage.setItem("theme",n);
+    u(n);
+  };
+})();
+</script>
 <title>Shoving JavaScript down my throat &#8211; Paweł Adamczuk</title>
 <style id='wp-img-auto-sizes-contain-inline-css'>
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
@@ -95,6 +112,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   <nav class="site-nav">
     <a href="../index.html">Blog</a>
     <a href="mailto:p.m.adamczuk@gmail.com">Contact</a>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode" aria-label="Toggle theme">☽</button>
   </nav>
   
 </header>

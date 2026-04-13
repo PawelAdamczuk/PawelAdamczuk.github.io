@@ -4,6 +4,23 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name='robots' content='max-image-preview:large' />
+<script>
+(function(){
+  var s=localStorage.getItem("theme");
+  var p=window.matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";
+  var t=s||p;
+  document.documentElement.setAttribute("data-theme",t);
+  function u(th){var b=document.querySelector(".theme-toggle");if(b)b.textContent=th==="dark"?"☀":"☽";}
+  document.addEventListener("DOMContentLoaded",function(){u(t);});
+  window.toggleTheme=function(){
+    var c=document.documentElement.getAttribute("data-theme");
+    var n=c==="dark"?"light":"dark";
+    document.documentElement.setAttribute("data-theme",n);
+    localStorage.setItem("theme",n);
+    u(n);
+  };
+})();
+</script>
 <title>Document generation with LLM agents &#8211; Paweł Adamczuk</title>
 <style id='wp-img-auto-sizes-contain-inline-css'>
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
@@ -33,13 +50,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
 /*# sourceURL=https://paweladamczuk.com/wp-includes/blocks/paragraph/style.min.css */
 </style>
-<style id='wp-block-read-more-inline-css'>
-.wp-block-read-more{display:block;width:fit-content}.wp-block-read-more:where(:not([style*=text-decoration])){text-decoration:none}.wp-block-read-more:where(:not([style*=text-decoration])):active,.wp-block-read-more:where(:not([style*=text-decoration])):focus{text-decoration:none}
-/*# sourceURL=https://paweladamczuk.com/wp-includes/blocks/read-more/style.min.css */
-</style>
 <style id='wp-block-separator-inline-css'>
 @charset "UTF-8";.wp-block-separator{border:none;border-top:2px solid}:root :where(.wp-block-separator.is-style-dots){height:auto;line-height:1;text-align:center}:root :where(.wp-block-separator.is-style-dots):before{color:currentColor;content:"···";font-family:serif;font-size:1.5em;letter-spacing:2em;padding-left:2em}.wp-block-separator.is-style-dots{background:none!important;border:none!important}
 /*# sourceURL=https://paweladamczuk.com/wp-includes/blocks/separator/style.min.css */
+</style>
+<style id='wp-block-file-inline-css'>
+.wp-block-file{box-sizing:border-box}.wp-block-file:not(.wp-element-button){font-size:.8em}.wp-block-file.aligncenter{text-align:center}.wp-block-file.alignright{text-align:right}.wp-block-file *+.wp-block-file__button{margin-left:.75em}:where(.wp-block-file){margin-bottom:1.5em}.wp-block-file__embed{margin-bottom:1em}:where(.wp-block-file__button){border-radius:2em;display:inline-block;padding:.5em 1em}:where(.wp-block-file__button):where(a):active,:where(.wp-block-file__button):where(a):focus,:where(.wp-block-file__button):where(a):hover,:where(.wp-block-file__button):where(a):visited{box-shadow:none;color:#fff;opacity:.85;text-decoration:none}
+/*# sourceURL=https://paweladamczuk.com/wp-includes/blocks/file/style.min.css */
 </style>
 <style id='wp-block-footnotes-inline-css'>
 .editor-styles-wrapper,.entry-content{counter-reset:footnotes}a[data-fn].fn{counter-increment:footnotes;display:inline-flex;font-size:smaller;text-decoration:none;text-indent:-9999999px;vertical-align:super}a[data-fn].fn:after{content:"[" counter(footnotes) "]";float:left;text-indent:0}
@@ -108,6 +125,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   <nav class="site-nav">
     <a href="../index.html">Blog</a>
     <a href="mailto:p.m.adamczuk@gmail.com">Contact</a>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode" aria-label="Toggle theme">☽</button>
   </nav>
   
 </header>
@@ -128,7 +146,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>Having your LLM agent prepare a document for you is really powerful. How can it be done effectively and without locking your data in a single corporate silo?</p>
 
 
-<a class="wp-block-read-more" href="index.html" target="_self">Read more<span class="screen-reader-text">: Document generation with LLM agents</span></a>
+
+<span id="more-111"></span>
+
 
 
 <hr class="wp-block-separator has-alpha-channel-opacity"/>
@@ -163,15 +183,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
 
 
-<p>MD -> PDF powered by <a href="https://pandoc.org/">Pandoc</a> seemed like a really good idea at first, but quickly evolved into the LaTeX workflow with extra steps. Pandoc&#8217;s defaults for converting MD to PDF are not great and a lot of customization was needed for my own documents.</p>
+<p>MD -&gt; PDF powered by <a href="https://pandoc.org/">Pandoc</a> seemed like a really good idea at first, but quickly evolved into the LaTeX workflow with extra steps. Pandoc&#8217;s defaults for converting MD to PDF are not great and a lot of customization was needed for my own documents.</p>
 
 
 
-<p>HTML -> PDF generation looked promising as well. The thing is that the tooling for it is all over the place. It&#8217;s either years-old projects or headless browsers under the hood. For some reason I cannot quite put into words, every single solution I&#8217;ve found so far gives me systems design anxiety. </p>
+<p>HTML -&gt; PDF generation looked promising as well. The thing is that the tooling for it is all over the place. It&#8217;s either years-old projects or headless browsers under the hood. For some reason I cannot quite put into words, every single solution I&#8217;ve found so far gives me systems design anxiety. </p>
 
 
 
-<p>Since there usually is a visual inspection step anyway right before printing, for now I&#8217;m settling for the browser generating the PDF via the printing dialog. I really hope there is a solution out there that doesn&#8217;t involve dead projects, bleeding edge tech or gigabytes of dependencies.</p>
+<p>Since there usually is a visual inspection step anyway right before printing, for now I&#8217;m settling for the browser generating the PDF via the printing dialog.</p>
+
+
+
+<p>Here&#8217;s an HTML template that prints nicely in Firefox and conforms to Polish official letter standard, that for some reason puts the sender on the left and the addressee on the right (both the content and the CSS rules in the document were generated by an LLM).</p>
+
+
+
+<div class="wp-block-file"><a id="wp-block-file--media-eb4ba057-951a-49f9-b9b6-9a620aa3f0ac" href="../wp-content/uploads/2026/04/template.html">template</a><a href="../wp-content/uploads/2026/04/template.html" class="wp-block-file__button wp-element-button" download aria-describedby="wp-block-file--media-eb4ba057-951a-49f9-b9b6-9a620aa3f0ac">Download</a></div>
+
+
+
+<p>I really hope there is a solution out there that doesn&#8217;t involve dead projects, bleeding edge tech or gigabytes of dependencies.</p>
 
 
 <ol class="wp-block-footnotes"><li id="a219a36d-5c27-4f27-8089-f0b09b83d133">A notable exception is the web interface for the Github Copilot. If all you need is a markdown file, I found its file modification and versioning workflow surprisingly usable. <a href="index.html#a219a36d-5c27-4f27-8089-f0b09b83d133-link" aria-label="Jump to footnote reference 1">↩︎</a></li><li id="5a123857-5959-4130-8972-d7774093b435">It&#8217;s all so tiresome. We used to just call them &#8220;files&#8221; back in the day. <a href="index.html#5a123857-5959-4130-8972-d7774093b435-link" aria-label="Jump to footnote reference 2">↩︎</a></li></ol>
